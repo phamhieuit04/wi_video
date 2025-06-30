@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Eloquent;
 
-interface RepositoryInterface
+interface EloquentRepositoryInterface
 {
     // Param orderBy: asc or desc string
     public function getAll($paginate = null, $orderBy = null);

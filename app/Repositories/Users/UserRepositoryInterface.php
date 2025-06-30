@@ -2,7 +2,9 @@
 
 namespace App\Repositories\Users;
 
+use App\Models\User;
+
 interface UserRepositoryInterface
 {
-    // Define Specialized methods.
+    public function findByEmail($email);
 }

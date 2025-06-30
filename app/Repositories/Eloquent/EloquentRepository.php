@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Eloquent;
 
-abstract class EloquentRepository implements RepositoryInterface
+abstract class EloquentRepository implements EloquentRepositoryInterface
 {
     protected $_model;
 

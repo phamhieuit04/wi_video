@@ -18,4 +18,8 @@ class UserEloquentRepository extends EloquentRepository implements UserRepositor
     }
 
     // Deploy special methods.
+    public function findByEmail($email)
+    {
+        return User::where('email', $email)->first();
+    }
 }
