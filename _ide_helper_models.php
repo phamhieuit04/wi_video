@@ -86,6 +86,7 @@ namespace App\Models{
  * @property int $video_id
  * @property int|null $created_at
  * @property int|null $updated_at
+ * @property int $user_id
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Report newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Report newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Report query()
