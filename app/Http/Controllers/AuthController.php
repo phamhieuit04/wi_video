@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Factory\Auth\AuthFactory;
+use App\Factory\Auth\FacebookAuth;
 use App\Factory\Auth\GoogleAuth;
 use App\Repositories\Users\UserRepositoryInterface;
 use Illuminate\Http\Request;
@@ -19,25 +21,25 @@ class AuthController extends Controller
         return view('auth');
     }
 
-    public function googleAuth(Request $request)
+    public function redirect(Request $request, string $provider)
+    {
+        $authFactory = AuthFactory::make($provider);
+        return redirect()->away($authFactory->getOAuthUrl());
+    }
+
+    public function callback(Request $request, string $provider)
     {
         $params = $request->all();
-        $googleAuth = new GoogleAuth();
+        $authFactory = AuthFactory::make($provider);
         try {
-            // Get access token from google
-            $accessToken = $googleAuth->getAccessToken($params['code']);
-            $userInfo = $googleAuth->getUserInfo($accessToken);
-            // Check user info in DB
+            $accessToken = $authFactory->getAccessToken($params['code']);
+            $userInfo = $authFactory->getUserInfo($accessToken);
             $user = $this->userRepo->findByEmail($userInfo['email']);
-            // User has ready, create session and go to home page.
             if (is_null($user)) {
-                // Add new user
                 $newUserInfo = [
                     'name' => $userInfo['name'],
                     'email' => $userInfo['email'],
-                    'avatar' => $userInfo['picture'],
-                    'google_id' => '',
-                    'facebook_id' => ''
+                    'avatar' => $userInfo['picture']
                 ];
                 $user = $this->userRepo->create($newUserInfo);
             }
