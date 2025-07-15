@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use function Laravel\Prompts\progress;
 
 class UserSeeder extends Seeder
 {
@@ -14,15 +15,15 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::transaction(function () {
-            for ($i = 0; $i < 10; $i++) {
-                DB::table('users')->insert([
-                    'name' => fake()->userName(),
-                    'email' => fake()->unique()->safeEmail(),
-                    'created_at' => now(),
-                    'updated_at' => now()
-                ]);
-            }
-        });
+        progress(
+            'Seeding users...',
+            10,
+            fn() => DB::table('users')->insert([
+                'name' => fake()->name(),
+                'email' => fake()->unique()->safeEmail(),
+                'created_at' => now(),
+                'updated_at' => now()
+            ])
+        );
     }
 }

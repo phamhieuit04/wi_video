@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use function Laravel\Prompts\progress;
 
 class FollowSeeder extends Seeder
 {
@@ -13,8 +14,10 @@ class FollowSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::transaction(function () {
-            for ($i = 0; $i < 10; $i++) {
+        progress(
+            'Seeding follows...',
+            10,
+            function () {
                 $user_id = fake()->numberBetween(1, 10);
                 $follow_id = fake()->numberBetween(1, 10);
                 while ($follow_id == $user_id) {
@@ -27,6 +30,6 @@ class FollowSeeder extends Seeder
                     'updated_at' => now()
                 ]);
             }
-        });
+        );
     }
 }
