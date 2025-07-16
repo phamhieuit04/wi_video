@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Factory\Auth;
+namespace App\Contracts\Services;
 
 interface AuthInterface
 {

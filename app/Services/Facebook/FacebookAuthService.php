@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Factory\Auth;
+namespace App\Services\Facebook;
 
+use App\Contracts\Services\AuthInterface;
 use Illuminate\Support\Facades\Http;
 
-class FacebookAuth implements AuthInterface
+class FacebookAuthService implements AuthInterface
 {
     const AUTH_URL = 'https://www.facebook.com/v18.0/dialog/oauth';
     const TOKEN_URL = 'https://graph.facebook.com/v18.0/oauth/access_token';

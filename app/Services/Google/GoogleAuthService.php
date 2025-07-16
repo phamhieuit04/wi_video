@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Factory\Auth;
+namespace App\Services\Google;
 
+use App\Contracts\Services\AuthInterface;
 use Illuminate\Support\Facades\Http;
 
-class GoogleAuth implements AuthInterface
+class GoogleAuthService implements AuthInterface
 {
     const AUTH_URL = 'https://accounts.google.com/o/oauth2/v2/auth';
     const TOKEN_URL = 'https://oauth2.googleapis.com/token';
