@@ -36,12 +36,11 @@ class AuthController extends Controller
             $userInfo = $authFactory->getUserInfo($accessToken);
             $user = $this->userRepo->findByEmail($userInfo['email']);
             if (is_null($user)) {
-                $newUserInfo = [
+                $user = $this->userRepo->create([
                     'name' => $userInfo['name'],
                     'email' => $userInfo['email'],
                     'avatar' => $userInfo['picture']
-                ];
-                $user = $this->userRepo->create($newUserInfo);
+                ]);
             }
             Auth::login($user);
             return redirect('/home');
