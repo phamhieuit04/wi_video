@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Pushes;
 
+use App\Contracts\Repositories\PushRepositoryInterface;
 use App\Models\Push;
 use App\Repositories\Eloquent\EloquentRepository;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Eloquent;
+namespace App\Contracts\Repositories;
 
 interface EloquentRepositoryInterface
 {

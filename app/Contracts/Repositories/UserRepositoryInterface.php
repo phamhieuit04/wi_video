@@ -1,8 +1,6 @@
 <?php
 
-namespace App\Repositories\Users;
-
-use App\Models\User;
+namespace App\Contracts\Repositories;
 
 interface UserRepositoryInterface
 {

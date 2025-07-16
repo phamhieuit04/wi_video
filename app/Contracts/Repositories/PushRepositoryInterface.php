@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Pushes;
+namespace App\Contracts\Repositories;
 
 interface PushRepositoryInterface
 {

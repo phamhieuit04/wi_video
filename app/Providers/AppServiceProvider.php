@@ -2,20 +2,20 @@
 
 namespace App\Providers;
 
+use App\Contracts\Repositories\CommentRepositoryInterface;
+use App\Contracts\Repositories\FollowRepositoryInterface;
+use App\Contracts\Repositories\LikeRepositoryInterface;
+use App\Contracts\Repositories\PushRepositoryInterface;
+use App\Contracts\Repositories\ReportRepositoryInterface;
+use App\Contracts\Repositories\UserRepositoryInterface;
+use App\Contracts\Repositories\VideoRepositoryInterface;
 use App\Repositories\Comments\CommentEloquentRepository;
-use App\Repositories\Comments\CommentRepositoryInterface;
 use App\Repositories\Follows\FollowEloquentRepository;
-use App\Repositories\Follows\FollowRepositoryInterface;
 use App\Repositories\Likes\LikeEloquentRepository;
-use App\Repositories\Likes\LikeRepositoryInterface;
 use App\Repositories\Pushes\PushEloquentRepository;
-use App\Repositories\Pushes\PushRepositoryInterface;
 use App\Repositories\Reports\ReportEloquentRepository;
-use App\Repositories\Reports\ReportRepositoryInterface;
 use App\Repositories\Users\UserEloquentRepository;
-use App\Repositories\Users\UserRepositoryInterface;
 use App\Repositories\Videos\VideoEloquentRepository;
-use App\Repositories\Videos\VideoRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider

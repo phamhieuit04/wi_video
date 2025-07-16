@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Likes;
 
+use App\Contracts\Repositories\LikeRepositoryInterface;
 use App\Models\Like;
 use App\Repositories\Eloquent\EloquentRepository;
 

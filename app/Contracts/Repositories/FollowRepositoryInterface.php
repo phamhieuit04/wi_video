@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Follows;
+namespace App\Contracts\Repositories;
 
 interface FollowRepositoryInterface
 {

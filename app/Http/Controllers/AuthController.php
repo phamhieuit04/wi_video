@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\Repositories\UserRepositoryInterface;
 use App\Factory\Auth\AuthFactory;
-use App\Factory\Auth\FacebookAuth;
-use App\Factory\Auth\GoogleAuth;
-use App\Repositories\Users\UserRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;

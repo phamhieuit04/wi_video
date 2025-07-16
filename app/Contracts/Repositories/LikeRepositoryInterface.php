@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Likes;
+namespace App\Contracts\Repositories;
 
 interface LikeRepositoryInterface
 {

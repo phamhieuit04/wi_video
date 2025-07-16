@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Videos;
+namespace App\Contracts\Repositories;
 
 interface VideoRepositoryInterface
 {

@@ -3,9 +3,7 @@
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('app');
-});
+Route::get('/', fn() => redirect('/auth'));
 
 Route::group(['prefix' => 'auth'], function () {
     Route::get('/', [AuthController::class, 'auth'])->name('login');

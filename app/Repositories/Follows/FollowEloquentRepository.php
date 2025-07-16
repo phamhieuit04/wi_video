@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Follows;
 
+use App\Contracts\Repositories\FollowRepositoryInterface;
 use App\Models\Follow;
 use App\Repositories\Eloquent\EloquentRepository;
 

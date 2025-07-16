@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Reports;
 
+use App\Contracts\Repositories\ReportRepositoryInterface;
 use App\Models\Report;
 use App\Repositories\Eloquent\EloquentRepository;
 

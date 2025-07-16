@@ -2,6 +2,8 @@
 
 namespace App\Repositories\Eloquent;
 
+use App\Contracts\Repositories\EloquentRepositoryInterface;
+
 abstract class EloquentRepository implements EloquentRepositoryInterface
 {
     protected $_model;

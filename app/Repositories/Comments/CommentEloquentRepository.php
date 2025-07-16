@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Comments;
 
+use App\Contracts\Repositories\CommentRepositoryInterface;
 use App\Models\Comment;
 use App\Repositories\Eloquent\EloquentRepository;
 

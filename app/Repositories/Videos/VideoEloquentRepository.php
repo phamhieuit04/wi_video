@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Videos;
 
+use App\Contracts\Repositories\VideoRepositoryInterface;
 use App\Models\Video;
 use App\Repositories\Eloquent\EloquentRepository;
 
