@@ -1,3 +1,9 @@
+<script setup>
+import ContentComponent from './Components/ContentComponent.vue';
+import ChatComponent from './Components/ChatComponent.vue';
+</script>
+
 <template>
-    <RouterView />
+    <ContentComponent />
+    <ChatComponent />
 </template>
