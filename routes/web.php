@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn() => redirect('/auth'));
@@ -12,5 +13,7 @@ Route::group(['prefix' => 'auth'], function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/home', fn() => "<h1>Loggin thanh cong!</h1>");
+    Route::get('/home', [HomeController::class, 'index']);
+
+    Route::get('/logout', [HomeController::class, 'logout']);
 });
