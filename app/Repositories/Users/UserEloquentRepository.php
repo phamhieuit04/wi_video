@@ -23,4 +23,12 @@ class UserEloquentRepository extends EloquentRepository implements UserRepositor
     {
         return User::where('email', $email)->first();
     }
+
+    public function getInfo($id)
+    {
+        $user = $this->_model->where('id', $id)
+            ->withCount(['followers', 'following', 'videos'])
+            ->first();
+        return $user;
+    }
 }
