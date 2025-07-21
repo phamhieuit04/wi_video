@@ -6,7 +6,7 @@ use App\Contracts\Repositories\FollowRepositoryInterface;
 use App\Models\Follow;
 use App\Repositories\Eloquent\EloquentRepository;
 
-class FollowEloquentRepository extends EloquentRepository implements FollowRepositoryInterface
+class FollowRepository extends EloquentRepository implements FollowRepositoryInterface
 {
     /**
      * Implement abstract method and base model

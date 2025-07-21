@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Repositories\Pushes;
+namespace App\Repositories\Likes;
 
-use App\Contracts\Repositories\PushRepositoryInterface;
-use App\Models\Push;
+use App\Contracts\Repositories\LikeRepositoryInterface;
+use App\Models\Like;
 use App\Repositories\Eloquent\EloquentRepository;
 
-class PushEloquentRepository extends EloquentRepository implements PushRepositoryInterface
+class LikeRepository extends EloquentRepository implements LikeRepositoryInterface
 {
     /**
      * Implement abstract method and base model
@@ -15,7 +15,7 @@ class PushEloquentRepository extends EloquentRepository implements PushRepositor
      */
     public function getModel()
     {
-        return Push::class;
+        return Like::class;
     }
 
     // Deploy special methods.

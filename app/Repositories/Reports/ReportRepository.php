@@ -6,7 +6,7 @@ use App\Contracts\Repositories\ReportRepositoryInterface;
 use App\Models\Report;
 use App\Repositories\Eloquent\EloquentRepository;
 
-class ReportEloquentRepository extends EloquentRepository implements ReportRepositoryInterface
+class ReportRepository extends EloquentRepository implements ReportRepositoryInterface
 {
     /**
      * Implement abstract method and base model

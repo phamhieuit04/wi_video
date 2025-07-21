@@ -6,7 +6,7 @@ use App\Contracts\Repositories\CommentRepositoryInterface;
 use App\Models\Comment;
 use App\Repositories\Eloquent\EloquentRepository;
 
-class CommentEloquentRepository extends EloquentRepository implements CommentRepositoryInterface
+class CommentRepository extends EloquentRepository implements CommentRepositoryInterface
 {
     /**
      * Implement abstract method and base model

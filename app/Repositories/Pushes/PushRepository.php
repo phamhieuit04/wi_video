@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Repositories\Videos;
+namespace App\Repositories\Pushes;
 
-use App\Contracts\Repositories\VideoRepositoryInterface;
-use App\Models\Video;
+use App\Contracts\Repositories\PushRepositoryInterface;
+use App\Models\Push;
 use App\Repositories\Eloquent\EloquentRepository;
 
-class VideoEloquentRepository extends EloquentRepository implements VideoRepositoryInterface
+class PushRepository extends EloquentRepository implements PushRepositoryInterface
 {
     /**
      * Implement abstract method and base model
@@ -15,7 +15,7 @@ class VideoEloquentRepository extends EloquentRepository implements VideoReposit
      */
     public function getModel()
     {
-        return Video::class;
+        return Push::class;
     }
 
     // Deploy special methods.

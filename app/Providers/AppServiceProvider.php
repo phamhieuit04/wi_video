@@ -9,13 +9,13 @@ use App\Contracts\Repositories\PushRepositoryInterface;
 use App\Contracts\Repositories\ReportRepositoryInterface;
 use App\Contracts\Repositories\UserRepositoryInterface;
 use App\Contracts\Repositories\VideoRepositoryInterface;
-use App\Repositories\Comments\CommentEloquentRepository;
-use App\Repositories\Follows\FollowEloquentRepository;
-use App\Repositories\Likes\LikeEloquentRepository;
-use App\Repositories\Pushes\PushEloquentRepository;
-use App\Repositories\Reports\ReportEloquentRepository;
-use App\Repositories\Users\UserEloquentRepository;
-use App\Repositories\Videos\VideoEloquentRepository;
+use App\Repositories\Comments\CommentRepository;
+use App\Repositories\Follows\FollowRepository;
+use App\Repositories\Likes\LikeRepository;
+use App\Repositories\Pushes\PushRepository;
+use App\Repositories\Reports\ReportRepository;
+use App\Repositories\Users\UserRepository;
+use App\Repositories\Videos\VideoRepository;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -27,31 +27,31 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->singleton(
             UserRepositoryInterface::class,
-            UserEloquentRepository::class
+            UserRepository::class
         );
         $this->app->singleton(
             FollowRepositoryInterface::class,
-            FollowEloquentRepository::class
+            FollowRepository::class
         );
         $this->app->singleton(
             CommentRepositoryInterface::class,
-            CommentEloquentRepository::class
+            CommentRepository::class
         );
         $this->app->singleton(
             PushRepositoryInterface::class,
-            PushEloquentRepository::class
+            PushRepository::class
         );
         $this->app->singleton(
             LikeRepositoryInterface::class,
-            LikeEloquentRepository::class
+            LikeRepository::class
         );
         $this->app->singleton(
             ReportRepositoryInterface::class,
-            ReportEloquentRepository::class
+            ReportRepository::class
         );
         $this->app->singleton(
             VideoRepositoryInterface::class,
-            VideoEloquentRepository::class
+            VideoRepository::class
         );
     }
 

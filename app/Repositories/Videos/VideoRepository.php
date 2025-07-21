@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Repositories\Likes;
+namespace App\Repositories\Videos;
 
-use App\Contracts\Repositories\LikeRepositoryInterface;
-use App\Models\Like;
+use App\Contracts\Repositories\VideoRepositoryInterface;
+use App\Models\Video;
 use App\Repositories\Eloquent\EloquentRepository;
 
-class LikeEloquentRepository extends EloquentRepository implements LikeRepositoryInterface
+class VideoRepository extends EloquentRepository implements VideoRepositoryInterface
 {
     /**
      * Implement abstract method and base model
@@ -15,7 +15,7 @@ class LikeEloquentRepository extends EloquentRepository implements LikeRepositor
      */
     public function getModel()
     {
-        return Like::class;
+        return Video::class;
     }
 
     // Deploy special methods.

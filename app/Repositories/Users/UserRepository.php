@@ -6,7 +6,7 @@ use App\Contracts\Repositories\UserRepositoryInterface;
 use App\Models\User;
 use App\Repositories\Eloquent\EloquentRepository;
 
-class UserEloquentRepository extends EloquentRepository implements UserRepositoryInterface
+class UserRepository extends EloquentRepository implements UserRepositoryInterface
 {
     /**
      * Implement abstract method and base model
