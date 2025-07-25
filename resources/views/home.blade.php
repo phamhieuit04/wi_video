@@ -38,7 +38,7 @@
                     </div>
                 </div>
                 {{-- Start vue component --}}
-                <div id="app"></div>
+                {{-- <div id="app"></div> --}}
                 {{-- End vue component --}}
             </div>
         </div>
