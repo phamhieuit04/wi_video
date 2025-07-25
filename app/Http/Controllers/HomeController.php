@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\Repositories\UserRepositoryInterface;
+use App\Helpers\ApiResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -25,7 +26,11 @@ class HomeController extends Controller
 
     public function logout()
     {
-        Auth::logout();
-        return redirect('/auth');
+        try {
+            Auth::user()->tokens()->delete();
+            return ApiResponse::success();
+        } catch (\Throwable $th) {
+            return ApiResponse::internalServerError();
+        }
     }
 }
