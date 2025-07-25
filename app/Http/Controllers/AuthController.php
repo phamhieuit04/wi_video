@@ -36,8 +36,8 @@ class AuthController extends Controller
                     'avatar' => $userInfo['picture']
                 ]);
             }
-            $user->token = $user->createToken($user->email)->plainTextToken;
-            return redirect('/home');
+            $token = $user->createToken($user->email)->plainTextToken;
+            return redirect()->away(env('APP_URL') . "/auth?code=$token?provider=$provider");
         } catch (\Exception $e) {
             Log::error($e->getMessage());
             return redirect('/auth');

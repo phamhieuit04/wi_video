@@ -1,7 +1,7 @@
 <template>
-    <div class="container mx-auto flex h-screen items-center justify-center">
+    <div class="flex h-screen items-center justify-center dark:bg-black bg-white">
         <div class="flex items-center gap-8">
-            <div class="flex w-[650px] flex-col gap-2 text-white">
+            <div class="flex w-[650px] flex-col gap-2">
                 <h1 class="text-8xl font-bold text-red-600">Wi Video</h1>
                 <p class="text-xl text-black dark:text-white">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -36,6 +36,27 @@
 import api from '../Api/axios';
 
 export default {
+    data() {
+        return {
+            count: 2,
+            timer: null
+        }
+    },
+    mounted() {
+        const queryString = window.location.href.split('?')[1];
+        const token = new URLSearchParams(queryString).get('code');
+        if (token) {
+            console.log(token);
+            localStorage.setItem('token', token);
+            this.timer = setInterval(() => {
+                this.count--
+                if (this.count <= 0) {
+                    clearInterval(this.timer)
+                    this.$router.push('/home')
+                }
+            }, 1000)
+        }
+    },
     methods: {
         async redirect(provider) {
             await api.get('/auth/' + provider + '/redirect').then((res) => {
