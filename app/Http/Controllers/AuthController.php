@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Contracts\Repositories\UserRepositoryInterface;
 use App\Factory\Auth\AuthFactory;
+use App\Helpers\ApiResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -14,15 +15,10 @@ class AuthController extends Controller
     {
     }
 
-    public function auth()
-    {
-        return view('auth');
-    }
-
     public function redirect(Request $request, string $provider)
     {
         $authFactory = AuthFactory::make($provider);
-        return redirect()->away($authFactory->getOAuthUrl());
+        return ApiResponse::success($authFactory->getOAuthUrl());
     }
 
     public function callback(Request $request, string $provider)
@@ -40,7 +36,7 @@ class AuthController extends Controller
                     'avatar' => $userInfo['picture']
                 ]);
             }
-            Auth::login($user);
+            $user->token = $user->createToken($user->email)->plainTextToken;
             return redirect('/home');
         } catch (\Exception $e) {
             Log::error($e->getMessage());
