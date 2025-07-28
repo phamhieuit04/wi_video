@@ -30,6 +30,10 @@
             </div>
         </div>
     </div>
+
+    <div v-if="isLoading" class="fixed inset-0 flex items-center justify-center bg-black/75">
+        <iconify-icon icon="svg-spinners:clock" class="text-6xl text-white"></iconify-icon>
+    </div>
 </template>
 
 <script>
@@ -39,19 +43,21 @@ export default {
     data() {
         return {
             count: 2,
-            timer: null
+            timer: null,
+            isLoading: false
         }
     },
     mounted() {
         const queryString = window.location.href.split('?')[1];
         const token = new URLSearchParams(queryString).get('code');
         if (token) {
-            console.log(token);
+            this.isLoading = true;
             localStorage.setItem('token', token);
             this.timer = setInterval(() => {
                 this.count--
                 if (this.count <= 0) {
                     clearInterval(this.timer)
+                    this.isLoading = false;
                     this.$router.push('/home')
                 }
             }, 1000)

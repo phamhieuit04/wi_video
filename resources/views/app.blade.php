@@ -8,6 +8,7 @@
             rel="stylesheet"
             href="{{ asset('assets/fontawesome/css/all.css') }}"
         />
+        <script src="https://cdn.jsdelivr.net/npm/iconify-icon@3.0.0/dist/iconify-icon.min.js"></script>
         @vite(['resources/js/app.js', 'resources/css/app.css'])
     </head>
     <body>
