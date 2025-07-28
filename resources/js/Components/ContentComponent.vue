@@ -1,3 +1,8 @@
+<script setup>
+import ReportVideoModal from '../Modals/ReportVideoModal.vue';
+import UploadVideoModal from '../Modals/UploadVideoModal.vue';
+</script>
+
 <template>
     <div class="grow h-screen">
         <div class="bg-[#0d0d0d] flex items-center justify-between h-18 px-5">
@@ -9,7 +14,7 @@
                     <i class="fa fa-heart-circle-plus"></i>
                 </button>
             </div>
-            <button type="button" class="p-2.5 cursor-pointer hover:opacity-75">
+            <button @click="showModal('report_video')" type="button" class="p-2.5 cursor-pointer hover:opacity-75">
                 <img src="../../../public/assets/images/ic_report.png" width="18px" height="18px" alt="">
             </button>
         </div>
@@ -24,7 +29,8 @@
                 <button class="bg-red-600 size-10 rounded-sm cursor-pointer hover:opacity-75">
                     <i class="fa-solid fa-angle-left"></i>
                 </button>
-                <button class="bg-red-600 size-10 rounded-sm cursor-pointer hover:opacity-75">
+                <button @click="showModal('upload_video')"
+                    class="bg-red-600 size-10 rounded-sm cursor-pointer hover:opacity-75">
                     <i class="fa-solid fa-plus"></i>
                 </button>
                 <button class="bg-red-600 size-10 rounded-sm cursor-pointer hover:opacity-75">
@@ -33,10 +39,41 @@
             </div>
         </div>
     </div>
+
+    <UploadVideoModal v-if="isShowUploadVideoModal" @close_modal="closeModal('upload_video')" />
+
+    <ReportVideoModal v-if="isShowReportVideoModal" @close_modal="closeModal('report_video')" />
 </template>
 
 <script>
 export default {
-
+    data() {
+        return {
+            isShowUploadVideoModal: false,
+            isShowReportVideoModal: false
+        }
+    },
+    methods: {
+        showModal(modal) {
+            switch (modal) {
+                case 'upload_video':
+                    this.isShowUploadVideoModal = true
+                    break;
+                case 'report_video':
+                    this.isShowReportVideoModal = true
+                    break;
+            }
+        },
+        closeModal(modal) {
+            switch (modal) {
+                case 'upload_video':
+                    this.isShowUploadVideoModal = false
+                    break;
+                case 'report_video':
+                    this.isShowReportVideoModal = false
+                    break;
+            }
+        }
+    }
 }
 </script>
