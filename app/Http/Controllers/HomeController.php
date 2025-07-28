@@ -16,12 +16,13 @@ class HomeController extends Controller
         $this->userRepo = $userRepo;
     }
 
-    public function index(Request $request)
+    public function getInfo(Request $request)
     {
-        $user = $this->userRepo->getInfo(Auth::id());
-        return view('home', [
-            'user' => $user
-        ]);
+        try {
+            return ApiResponse::success($this->userRepo->getInfo(Auth::id()));
+        } catch (\Throwable $th) {
+            return ApiResponse::internalServerError();
+        }
     }
 
     public function logout()

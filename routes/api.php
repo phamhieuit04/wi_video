@@ -15,5 +15,6 @@ Route::group(['prefix' => 'auth'], function () {
 });
 
 Route::middleware(['auth:sanctum'])->group(function () {
+    Route::get('/get-info', [HomeController::class, 'getInfo']);
     Route::get('/logout', [HomeController::class, 'logout']);
 });
