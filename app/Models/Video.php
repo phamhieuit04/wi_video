@@ -10,7 +10,7 @@ class Video extends Model
 
     protected $fillable = [
         'video_url',
-        'capition',
+        'caption',
         'author_id',
         'created_at',
         'updated_at'
