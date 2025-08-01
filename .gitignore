@@ -5,6 +5,7 @@
 /public/storage
 /storage/*.key
 /storage/*.json
+/storage/*.json:Zone.Identifier
 /vendor
 .env
 .env.backup
