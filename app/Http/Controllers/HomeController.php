@@ -8,6 +8,7 @@ use App\Helpers\ApiResponse;
 use App\Services\Google\GoogleDriveService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
@@ -24,6 +25,7 @@ class HomeController extends Controller
         try {
             return ApiResponse::success($this->userRepo->getInfo(Auth::id()));
         } catch (\Throwable $th) {
+            Log::error($th);
             return ApiResponse::internalServerError();
         }
     }
@@ -49,8 +51,38 @@ class HomeController extends Controller
             }
             return ApiResponse::success();
         } catch (\Throwable $th) {
+            Log::error($th);
             return ApiResponse::internalServerError();
         }
+    }
+
+    public function getVideo(Request $request)
+    {
+        $params = $request->all();
+        $video = $this->videoRepo->getVideo($params['video_id']);
+        $isLike = false;
+        $isMyVideo = false;
+        $isFollow = false;
+        if (count($video->likes) > 0) {
+            foreach ($video->likes as $like) {
+                if ($like->user_id == Auth::id()) {
+                    $isLike = true;
+                }
+            }
+        }
+        if ($video->author_id == Auth::id()) {
+            $isMyVideo = true;
+        } else {
+            $isFollow = $this->userRepo->find(Auth::id())->followers
+                ->pluck('follow_id')->toArray();
+            if (in_array(Auth::id(), $isFollow)) {
+                $isFollow = true;
+            }
+        }
+        $video->is_like = $isLike;
+        $video->is_my_video = $isMyVideo;
+        $video->is_follow = $isFollow;
+        return ApiResponse::success($video);
     }
 
     public function logout()
@@ -59,6 +91,7 @@ class HomeController extends Controller
             Auth::user()->tokens()->delete();
             return ApiResponse::success();
         } catch (\Throwable $th) {
+            Log::error($th);
             return ApiResponse::internalServerError();
         }
     }

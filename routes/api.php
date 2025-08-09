@@ -16,6 +16,7 @@ Route::group(['prefix' => 'auth'], function () {
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/get-info', [HomeController::class, 'getInfo']);
+    Route::get('/get-video', [HomeController::class, 'getVideo']);
     Route::post('/upload-video', [HomeController::class, 'uploadVideo']);
     Route::get('/logout', [HomeController::class, 'logout']);
 });
