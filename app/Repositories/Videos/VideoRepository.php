@@ -19,4 +19,8 @@ class VideoRepository extends EloquentRepository implements VideoRepositoryInter
     }
 
     // Deploy special methods.
+    public function getVideo($id)
+    {
+        return $this->_model->with(['likes', 'author'])->where('id', $id)->first();
+    }
 }

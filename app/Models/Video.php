@@ -23,4 +23,14 @@ class Video extends Model
             'updated_at' => 'timestamp'
         ];
     }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class, 'video_id', 'id');
+    }
+
+    public function author()
+    {
+        return $this->hasOne(User::class, 'id', 'author_id');
+    }
 }
