@@ -20,7 +20,7 @@
             <div class="flex gap-3 justify-end">
                 <button @click="$emit('close_modal')" type="button"
                     class="cursor-pointer hover:opacity-75">Đóng</button>
-                <button type="button" @click="uploadVideo()"
+                <button type="button" @click="uploadVideo(), $emit('close_modal')"
                     class="bg-red-600 text-white py-2 px-4 rounded-lg hover:opacity-75 cursor-pointer">Đăng tải</button>
             </div>
         </div>
